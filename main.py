@@ -10,3 +10,12 @@
 # Open the starting letter file
 starting_file = open("./Input/Letters/starting_letter.txt")
 print(starting_file.readlines())
+
+# Open and iterate through the list of invited names list
+
+with open("./Input/Names/invited_names.txt", "r") as file:
+    for line in file:
+        print(line)
+
+
+
