@@ -1,23 +1,26 @@
-#TODO: Create a letter using starting_letter.txt 
-#for each name in invited_names.txt
-#Replace the [name] placeholder with the actual name.
-#Save the letters in the folder "ReadyToSend".
-    
-#Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
-    #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
-        #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
-
-# Open the starting letter file
-starting_file = open("./Input/Letters/starting_letter.txt")
-print(starting_file.readlines(1))
+PLACEHOLDER = "[name]"
 
 # Open and iterate through the list of invited names list and make it into a list
 names = []
 with open("./Input/Names/invited_names.txt", "r") as file:
     for line in file:
         names.append(line)
-        print(line)
 print(names)
+
+# Open the letter template
+with open("./Input/Letters/starting_letter.txt") as letter_file:
+    full_letter = letter_file.read()
+
+    # Replace in the names
+    for name in names:
+        stripped_name = name.strip()
+        new_letter = full_letter.replace(PLACEHOLDER, stripped_name)
+        # Write a new letter as a separate file
+        with open(f"./Output/ReadyToSend/letter_for_{stripped_name}.txt","w") as completed_letter:
+            completed_letter.write(new_letter)
+
+
+# Write a new letter as a separate file
 
 
 
